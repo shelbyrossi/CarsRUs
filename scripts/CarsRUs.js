@@ -2,8 +2,28 @@ import { paintColorFunction } from "./Paints.js"
 import { interiorFunction } from "./Interior.js"
 import { technologyFunction } from "./Technologies.js"
 import { wheelsFunction } from "./Wheels.js"
+import { placeOrder } from "./database.js"
+import { Orders } from "./Orders.js"
 
 // importing the functions that generate the html representation of data 
+
+
+
+// Order Button 
+export const OrderButtonHTML = () => {
+    return `
+      <button id="orderButton">Place Order</button>
+    `
+  }
+
+document.addEventListener(
+  "click",
+  (event) => {
+    if (event.target.id === "orderButton") {
+     placeOrder()
+    }
+  }
+)
 
 
 
@@ -13,19 +33,19 @@ export const CarsRUs = () => {
 
         <article class="choices">
             <section class="choices__paints options">
-                <h2>Metals</h2>
+                
                 ${paintColorFunction()}
             </section>
             <section class="choices__interior options">
-                <h2>Sizes</h2>
+             
                 ${interiorFunction()}
             </section>
             <section class="choices__technologies options">
-                <h2>Styles</h2>
+          
                 ${technologyFunction()}
             </section>
             <section class="choices__wheels options">
-                <h2>Wheels</h2>
+           
                 ${wheelsFunction()}
         </article>
 
@@ -35,7 +55,7 @@ export const CarsRUs = () => {
 
         <article class="customOrders">
             <h2>Custom Car Orders</h2>
-            
+            ${Orders()}
            
         </article>
     `
